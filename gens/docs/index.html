@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fauthenticator_userpass.proto">proto/user/authenticator_userpass.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.ChangePasswordRequest"><span class="badge">M</span>ChangePasswordRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangePasswordResponse"><span class="badge">M</span>ChangePasswordResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginRequest"><span class="badge">M</span>LoginRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginResponse"><span class="badge">M</span>LoginResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterRequest"><span class="badge">M</span>RegisterRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterResponse"><span class="badge">M</span>RegisterResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.VerifyPasswordRequest"><span class="badge">M</span>VerifyPasswordRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.VerifyPasswordResponse"><span class="badge">M</span>VerifyPasswordResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#.AuthenticatorUserPass"><span class="badge">S</span>AuthenticatorUserPass</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fauthenticator_admin.proto">proto/user/authenticator_admin.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.SetAdminFlagRequest"><span class="badge">M</span>SetAdminFlagRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.SetAdminFlagResponse"><span class="badge">M</span>SetAdminFlagResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#.AuthenticatorAdmin"><span class="badge">S</span>AuthenticatorAdmin</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fauthenticator_anonymous.proto">proto/user/authenticator_anonymous.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.SetUserNameRequest"><span class="badge">M</span>SetUserNameRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.SetUserNameResponse"><span class="badge">M</span>SetUserNameResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#.AuthenticatorAnonymous"><span class="badge">S</span>AuthenticatorAnonymous</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fstatus.proto">proto/user/status.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.Status"><span class="badge">M</span>Status</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.Code"><span class="badge">E</span>Code</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fauthenticator_google2fa.proto">proto/user/authenticator_google2fa.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.DoSetupRequest"><span class="badge">M</span>DoSetupRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.DoSetupResponse"><span class="badge">M</span>DoSetupResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.GetSetupInfoRequest"><span class="badge">M</span>GetSetupInfoRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.GetSetupInfoResponse"><span class="badge">M</span>GetSetupInfoResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.VerifyRequest"><span class="badge">M</span>VerifyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.VerifyResponse"><span class="badge">M</span>VerifyResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#.AuthenticatorGoogle2fa"><span class="badge">S</span>AuthenticatorGoogle2fa</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#proto%2fuser%2fuser.proto">proto/user/user.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.AuthenticatorEvent"><span class="badge">M</span>AuthenticatorEvent</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeBeginRequest"><span class="badge">M</span>ChangeBeginRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeBeginResponse"><span class="badge">M</span>ChangeBeginResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeCheckRequest"><span class="badge">M</span>ChangeCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeCheckResponse"><span class="badge">M</span>ChangeCheckResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeEndRequest"><span class="badge">M</span>ChangeEndRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.ChangeEndResponse"><span class="badge">M</span>ChangeEndResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.CheckTokenRequest"><span class="badge">M</span>CheckTokenRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.CheckTokenResponse"><span class="badge">M</span>CheckTokenResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteBeginRequest"><span class="badge">M</span>DeleteBeginRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteBeginResponse"><span class="badge">M</span>DeleteBeginResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteCheckRequest"><span class="badge">M</span>DeleteCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteCheckResponse"><span class="badge">M</span>DeleteCheckResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteEndRequest"><span class="badge">M</span>DeleteEndRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.DeleteEndResponse"><span class="badge">M</span>DeleteEndResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.ListUsersRequest"><span class="badge">M</span>ListUsersRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.ListUsersResponse"><span class="badge">M</span>ListUsersResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginBeginRequest"><span class="badge">M</span>LoginBeginRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginBeginResponse"><span class="badge">M</span>LoginBeginResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginCheckRequest"><span class="badge">M</span>LoginCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginCheckResponse"><span class="badge">M</span>LoginCheckResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginEndRequest"><span class="badge">M</span>LoginEndRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.LoginEndResponse"><span class="badge">M</span>LoginEndResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterBeginRequest"><span class="badge">M</span>RegisterBeginRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterBeginResponse"><span class="badge">M</span>RegisterBeginResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterCheckRequest"><span class="badge">M</span>RegisterCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterCheckResponse"><span class="badge">M</span>RegisterCheckResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterEndRequest"><span class="badge">M</span>RegisterEndRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.RegisterEndResponse"><span class="badge">M</span>RegisterEndResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.RenewTokenRequest"><span class="badge">M</span>RenewTokenRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#.RenewTokenResponse"><span class="badge">M</span>RenewTokenResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#.UserInfo"><span class="badge">M</span>UserInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#.UserTokenInfo"><span class="badge">M</span>UserTokenInfo</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.AuthenticatorIdentity"><span class="badge">E</span>AuthenticatorIdentity</a>
+                </li>
+              
+                <li>
+                  <a href="#.Event"><span class="badge">E</span>Event</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#.UserServicer"><span class="badge">S</span>UserServicer</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/authenticator_userpass.proto">proto/user/authenticator_userpass.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".ChangePasswordRequest">ChangePasswordRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangePasswordResponse">ChangePasswordResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginRequest">LoginRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginResponse">LoginResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterRequest">RegisterRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterResponse">RegisterResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".VerifyPasswordRequest">VerifyPasswordRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".VerifyPasswordResponse">VerifyPasswordResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id=".AuthenticatorUserPass">AuthenticatorUserPass</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Register</td>
+                <td><a href="#RegisterRequest">.RegisterRequest</a></td>
+                <td><a href="#RegisterResponse">.RegisterResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Login</td>
+                <td><a href="#LoginRequest">.LoginRequest</a></td>
+                <td><a href="#LoginResponse">.LoginResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>VerifyPassword</td>
+                <td><a href="#VerifyPasswordRequest">.VerifyPasswordRequest</a></td>
+                <td><a href="#VerifyPasswordResponse">.VerifyPasswordResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ChangePassword</td>
+                <td><a href="#ChangePasswordRequest">.ChangePasswordRequest</a></td>
+                <td><a href="#ChangePasswordResponse">.ChangePasswordResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/authenticator_admin.proto">proto/user/authenticator_admin.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".SetAdminFlagRequest">SetAdminFlagRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>admin_flag</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".SetAdminFlagResponse">SetAdminFlagResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id=".AuthenticatorAdmin">AuthenticatorAdmin</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SetAdminFlag</td>
+                <td><a href="#SetAdminFlagRequest">.SetAdminFlagRequest</a></td>
+                <td><a href="#SetAdminFlagResponse">.SetAdminFlagResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/authenticator_anonymous.proto">proto/user/authenticator_anonymous.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".SetUserNameRequest">SetUserNameRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".SetUserNameResponse">SetUserNameResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id=".AuthenticatorAnonymous">AuthenticatorAnonymous</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SetUserName</td>
+                <td><a href="#SetUserNameRequest">.SetUserNameRequest</a></td>
+                <td><a href="#SetUserNameResponse">.SetUserNameResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/status.proto">proto/user/status.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".Status">Status</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#Code">Code</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".Code">Code</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CODE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_OK</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_NEED_AUTHENTICATOR</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_NOT_COMPLETED</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_NO_DATA_ERROR</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_INVALID_ARGS_ERROR</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_INTERNAL_ERROR</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_EXISTS_ERROR</td>
+                <td>7</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_NOT_IMPLEMENT_ERROR</td>
+                <td>8</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_CONFLICT_ERROR</td>
+                <td>9</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_EXPIRED_ERROR</td>
+                <td>10</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_LOGIC_ERROR</td>
+                <td>11</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_DUP_ERROR</td>
+                <td>12</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_VERIFY_ERROR</td>
+                <td>13</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_BAD_DATA_ERROR</td>
+                <td>14</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CODE_PERMISSION_ERROR</td>
+                <td>15</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/authenticator_google2fa.proto">proto/user/authenticator_google2fa.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".DoSetupRequest">DoSetupRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DoSetupResponse">DoSetupResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".GetSetupInfoRequest">GetSetupInfoRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".GetSetupInfoResponse">GetSetupInfoResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>secret_key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>qr_code</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".VerifyRequest">VerifyRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".VerifyResponse">VerifyResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id=".AuthenticatorGoogle2fa">AuthenticatorGoogle2fa</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetSetupInfo</td>
+                <td><a href="#GetSetupInfoRequest">.GetSetupInfoRequest</a></td>
+                <td><a href="#GetSetupInfoResponse">.GetSetupInfoResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DoSetup</td>
+                <td><a href="#DoSetupRequest">.DoSetupRequest</a></td>
+                <td><a href="#DoSetupResponse">.DoSetupResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Verify</td>
+                <td><a href="#VerifyRequest">.VerifyRequest</a></td>
+                <td><a href="#VerifyResponse">.VerifyResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="proto/user/user.proto">proto/user/user.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".AuthenticatorEvent">AuthenticatorEvent</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>authenticator</td>
+                  <td><a href="#AuthenticatorIdentity">AuthenticatorIdentity</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#Event">Event</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeBeginRequest">ChangeBeginRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>authenticators</td>
+                  <td><a href="#AuthenticatorIdentity">AuthenticatorIdentity</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeBeginResponse">ChangeBeginResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeCheckRequest">ChangeCheckRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeCheckResponse">ChangeCheckResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeEndRequest">ChangeEndRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ChangeEndResponse">ChangeEndResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".CheckTokenRequest">CheckTokenRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".CheckTokenResponse">CheckTokenResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token_info</td>
+                  <td><a href="#UserTokenInfo">UserTokenInfo</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteBeginRequest">DeleteBeginRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>authenticators</td>
+                  <td><a href="#AuthenticatorIdentity">AuthenticatorIdentity</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteBeginResponse">DeleteBeginResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteCheckRequest">DeleteCheckRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteCheckResponse">DeleteCheckResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteEndRequest">DeleteEndRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".DeleteEndResponse">DeleteEndResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".ListUsersRequest">ListUsersRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".ListUsersResponse">ListUsersResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_infos</td>
+                  <td><a href="#UserInfo">UserInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginBeginRequest">LoginBeginRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".LoginBeginResponse">LoginBeginResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginCheckRequest">LoginCheckRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginCheckResponse">LoginCheckResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginEndRequest">LoginEndRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".LoginEndResponse">LoginEndResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterBeginRequest">RegisterBeginRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".RegisterBeginResponse">RegisterBeginResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterCheckRequest">RegisterCheckRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterCheckResponse">RegisterCheckResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>needed_or_events</td>
+                  <td><a href="#AuthenticatorEvent">AuthenticatorEvent</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterEndRequest">RegisterEndRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>biz_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RegisterEndResponse">RegisterEndResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RenewTokenRequest">RenewTokenRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".RenewTokenResponse">RenewTokenResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#Status">Status</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token_info</td>
+                  <td><a href="#UserTokenInfo">UserTokenInfo</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".UserInfo">UserInfo</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>has_google_2fa</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>admin</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".UserTokenInfo">UserTokenInfo</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>start_at</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>age</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".AuthenticatorIdentity">AuthenticatorIdentity</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_USER</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_ANONYMOUS</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_USER_PASS</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_USER_PASS_PASS</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_PHONE</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_EMAIL</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_GOOGLE_2FA</td>
+                <td>7</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTHENTICATOR_IDENTITY_ADMIN_FLAG</td>
+                <td>8</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id=".Event">Event</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>EVENT_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EVENT_SETUP</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EVENT_VERIFY</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>EVENT_DELETE</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id=".UserServicer">UserServicer</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>RegisterBegin</td>
+                <td><a href="#RegisterBeginRequest">.RegisterBeginRequest</a></td>
+                <td><a href="#RegisterBeginResponse">.RegisterBeginResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>RegisterCheck</td>
+                <td><a href="#RegisterCheckRequest">.RegisterCheckRequest</a></td>
+                <td><a href="#RegisterCheckResponse">.RegisterCheckResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>RegisterEnd</td>
+                <td><a href="#RegisterEndRequest">.RegisterEndRequest</a></td>
+                <td><a href="#RegisterEndResponse">.RegisterEndResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LoginBegin</td>
+                <td><a href="#LoginBeginRequest">.LoginBeginRequest</a></td>
+                <td><a href="#LoginBeginResponse">.LoginBeginResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LoginCheck</td>
+                <td><a href="#LoginCheckRequest">.LoginCheckRequest</a></td>
+                <td><a href="#LoginCheckResponse">.LoginCheckResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LoginEnd</td>
+                <td><a href="#LoginEndRequest">.LoginEndRequest</a></td>
+                <td><a href="#LoginEndResponse">.LoginEndResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ChangeBegin</td>
+                <td><a href="#ChangeBeginRequest">.ChangeBeginRequest</a></td>
+                <td><a href="#ChangeBeginResponse">.ChangeBeginResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ChangeCheck</td>
+                <td><a href="#ChangeCheckRequest">.ChangeCheckRequest</a></td>
+                <td><a href="#ChangeCheckResponse">.ChangeCheckResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ChangeEnd</td>
+                <td><a href="#ChangeEndRequest">.ChangeEndRequest</a></td>
+                <td><a href="#ChangeEndResponse">.ChangeEndResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteBegin</td>
+                <td><a href="#DeleteBeginRequest">.DeleteBeginRequest</a></td>
+                <td><a href="#DeleteBeginResponse">.DeleteBeginResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteCheck</td>
+                <td><a href="#DeleteCheckRequest">.DeleteCheckRequest</a></td>
+                <td><a href="#DeleteCheckResponse">.DeleteCheckResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteEnd</td>
+                <td><a href="#DeleteEndRequest">.DeleteEndRequest</a></td>
+                <td><a href="#DeleteEndResponse">.DeleteEndResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ListUsers</td>
+                <td><a href="#ListUsersRequest">.ListUsersRequest</a></td>
+                <td><a href="#ListUsersResponse">.ListUsersResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CheckToken</td>
+                <td><a href="#CheckTokenRequest">.CheckTokenRequest</a></td>
+                <td><a href="#CheckTokenResponse">.CheckTokenResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>RenewToken</td>
+                <td><a href="#RenewTokenRequest">.RenewTokenRequest</a></td>
+                <td><a href="#RenewTokenResponse">.RenewTokenResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+

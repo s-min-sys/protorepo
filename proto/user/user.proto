@@ -1,0 +1,216 @@
+syntax = "proto3";
+
+import "proto/user/status.proto";
+
+option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
+option java_multiple_files = true;
+option java_package = "com.patdzb.user";
+option java_outer_classname = "UserProto";
+
+//
+//
+//
+
+enum AuthenticatorIdentity {
+  AUTHENTICATOR_IDENTITY_UNSPECIFIED = 0;
+  AUTHENTICATOR_IDENTITY_USER = 1;
+  AUTHENTICATOR_IDENTITY_ANONYMOUS = 2;
+  AUTHENTICATOR_IDENTITY_USER_PASS = 3;
+  AUTHENTICATOR_IDENTITY_USER_PASS_PASS = 4;
+  AUTHENTICATOR_IDENTITY_PHONE = 5;
+  AUTHENTICATOR_IDENTITY_EMAIL = 6;
+  AUTHENTICATOR_IDENTITY_GOOGLE_2FA = 7;
+  AUTHENTICATOR_IDENTITY_ADMIN_FLAG = 8;
+}
+
+enum Event {
+  EVENT_UNSPECIFIED = 0;
+  EVENT_SETUP = 1;
+  EVENT_VERIFY = 2;
+  EVENT_DELETE = 3;
+}
+
+message AuthenticatorEvent {
+  AuthenticatorIdentity authenticator = 1;
+  Event event = 2;
+}
+
+//
+//
+//
+
+message RegisterBeginRequest {
+
+}
+
+message RegisterBeginResponse {
+  Status status = 1;
+  string biz_id = 2;
+  repeated AuthenticatorEvent needed_or_events = 3;
+}
+
+message RegisterCheckRequest {
+  string biz_id = 1;
+}
+
+message RegisterCheckResponse {
+  Status status = 1;
+  repeated AuthenticatorEvent needed_or_events = 2;
+}
+
+message RegisterEndRequest {
+  string biz_id = 1;
+}
+
+message RegisterEndResponse {
+  Status status = 1;
+  string user_id = 2;
+  string token = 3;
+}
+
+message LoginBeginRequest {
+
+}
+
+message LoginBeginResponse {
+  Status status = 1;
+  string biz_id = 2;
+  repeated AuthenticatorEvent needed_or_events = 3;
+}
+
+message LoginCheckRequest {
+  string biz_id = 1;
+}
+
+message LoginCheckResponse {
+  Status status = 1;
+  repeated AuthenticatorEvent needed_or_events = 2;
+}
+
+message LoginEndRequest {
+  string biz_id = 1;
+}
+
+message LoginEndResponse {
+  Status status = 1;
+  string user_id = 2;
+  string token = 3;
+}
+
+message ChangeBeginRequest {
+  repeated AuthenticatorIdentity authenticators = 1;
+}
+
+message ChangeBeginResponse {
+  Status status = 1;
+  string biz_id = 2;
+  repeated AuthenticatorEvent needed_or_events = 3;
+}
+
+message ChangeCheckRequest {
+  string biz_id = 1;
+}
+
+message ChangeCheckResponse {
+  Status status = 1;
+  repeated AuthenticatorEvent needed_or_events = 2;
+}
+
+message ChangeEndRequest {
+  string biz_id = 1;
+}
+
+message ChangeEndResponse {
+  Status status = 1;
+}
+
+message DeleteBeginRequest {
+  repeated AuthenticatorIdentity authenticators = 1;
+}
+
+message DeleteBeginResponse {
+  Status status = 1;
+  string biz_id = 2;
+  repeated AuthenticatorEvent needed_or_events = 3;
+}
+
+message DeleteCheckRequest {
+  string biz_id = 1;
+}
+
+message DeleteCheckResponse {
+  Status status = 1;
+  repeated AuthenticatorEvent needed_or_events = 2;
+}
+
+message DeleteEndRequest {
+  string biz_id = 1;
+}
+
+message DeleteEndResponse {
+  Status status = 1;
+}
+
+message ListUsersRequest {
+
+}
+
+message UserInfo {
+  uint64 id = 1;
+  string user_name = 2;
+  bool has_google_2fa = 3;
+  bool admin = 4;
+}
+
+message ListUsersResponse {
+  Status status = 1;
+  repeated UserInfo user_infos = 2;
+}
+
+message CheckTokenRequest {
+
+}
+
+message UserTokenInfo {
+  uint64 id = 1;
+  string user_name = 2;
+  int64 start_at = 3;
+  int64 age = 4;
+}
+
+message CheckTokenResponse {
+  Status status = 1;
+  UserTokenInfo token_info = 2;
+}
+
+message RenewTokenRequest {
+
+}
+
+message RenewTokenResponse {
+  Status status = 1;
+  string new_token = 2;
+  UserTokenInfo token_info = 3;
+}
+
+service UserServicer {
+  rpc RegisterBegin(RegisterBeginRequest) returns (RegisterBeginResponse) {}
+  rpc RegisterCheck(RegisterCheckRequest) returns (RegisterCheckResponse) {}
+  rpc RegisterEnd(RegisterEndRequest) returns (RegisterEndResponse) {}
+
+  rpc LoginBegin(LoginBeginRequest) returns (LoginBeginResponse) {}
+  rpc LoginCheck(LoginCheckRequest) returns (LoginCheckResponse) {}
+  rpc LoginEnd(LoginEndRequest) returns (LoginEndResponse) {}
+
+  rpc ChangeBegin(ChangeBeginRequest) returns (ChangeBeginResponse) {}
+  rpc ChangeCheck(ChangeCheckRequest) returns (ChangeCheckResponse) {}
+  rpc ChangeEnd(ChangeEndRequest) returns (ChangeEndResponse) {}
+
+  rpc DeleteBegin(DeleteBeginRequest) returns (DeleteBeginResponse) {}
+  rpc DeleteCheck(DeleteCheckRequest) returns (DeleteCheckResponse) {}
+  rpc DeleteEnd(DeleteEndRequest) returns (DeleteEndResponse) {}
+
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+  rpc CheckToken(CheckTokenRequest) returns (CheckTokenResponse) {}
+  rpc RenewToken(RenewTokenRequest) returns (RenewTokenResponse) {}
+}

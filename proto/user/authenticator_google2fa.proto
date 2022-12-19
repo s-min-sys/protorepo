@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "proto/user/status.proto";
+
+option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
+option java_multiple_files = true;
+option java_package = "com.patdzb.user";
+option java_outer_classname = "UserProto";
+
+message GetSetupInfoRequest {
+  string biz_id = 1;
+}
+
+message GetSetupInfoResponse {
+  Status status = 1;
+  string secret_key = 2;
+  string qr_code = 3;
+}
+
+message DoSetupRequest {
+  string biz_id = 1;
+  string code = 2;
+}
+
+message DoSetupResponse {
+  Status status = 1;
+}
+
+message VerifyRequest {
+  string biz_id = 1;
+  string code = 2;
+}
+
+message VerifyResponse {
+  Status status = 1;
+}
+
+service AuthenticatorGoogle2fa {
+  rpc GetSetupInfo(GetSetupInfoRequest) returns (GetSetupInfoResponse) {}
+  rpc DoSetup(DoSetupRequest) returns (DoSetupResponse) {}
+  rpc Verify(VerifyRequest) returns (VerifyResponse) {}
+}

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "proto/user/status.proto";
+
+option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
+option java_multiple_files = true;
+option java_package = "com.patdzb.user";
+option java_outer_classname = "UserProto";
+
+message RegisterRequest {
+  string biz_id = 1;
+  string user_name = 2;
+  string password = 3;
+}
+
+message RegisterResponse {
+  Status status = 1;
+}
+
+message LoginRequest {
+  string biz_id = 1;
+  string user_name = 2;
+  string password = 3;
+}
+
+message LoginResponse {
+  Status status = 1;
+}
+
+message VerifyPasswordRequest {
+  string biz_id = 1;
+  string password = 2;
+}
+
+message VerifyPasswordResponse {
+  Status status = 1;
+}
+
+message ChangePasswordRequest {
+  string biz_id = 1;
+  string password = 2;
+}
+
+message ChangePasswordResponse {
+  Status status = 1;
+}
+
+service AuthenticatorUserPass {
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc VerifyPassword(VerifyPasswordRequest) returns (VerifyPasswordResponse) {}
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {}
+}

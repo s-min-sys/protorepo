@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "proto/user/status.proto";
+
+option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
+option java_multiple_files = true;
+option java_package = "com.patdzb.user";
+option java_outer_classname = "UserProto";
+
+message SetUserNameRequest {
+  string biz_id = 1;
+  string user_name = 2;
+}
+
+message SetUserNameResponse {
+  Status status = 1;
+}
+
+service AuthenticatorAnonymous {
+  rpc SetUserName(SetUserNameRequest) returns (SetUserNameResponse) {}
+}
