@@ -25,6 +25,7 @@ compile_in_docker_4js: lint
 	/usr/local/bin/docker run --rm -v $(PATH):/proto -w /proto rvolosatovs/protoc:v4.0.0-rc2 \
 		--proto_path=. \
 		--proto_path=/usr/include \
+		--proto_path=/usr/include/github.com/envoyproxy/protoc-gen-validate \
 		--js_out=import_style=commonjs,binary:./gens/tmp/js \
 		--ts_out=service=grpc-web:./gens/tmp/js \
 		$(shell find ./proto -name '*.proto')

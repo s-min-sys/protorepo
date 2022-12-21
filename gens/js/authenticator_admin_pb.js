@@ -17,6 +17,8 @@ var global = Function('return this')();
 
 var proto_user_status_pb = require('../../proto/user/status_pb.js');
 goog.object.extend(proto, proto_user_status_pb);
+var validate_validate_pb = require('../../validate/validate_pb.js');
+goog.object.extend(proto, validate_validate_pb);
 goog.exportSymbol('proto.SetAdminFlagRequest', null, global);
 goog.exportSymbol('proto.SetAdminFlagResponse', null, global);
 /**
@@ -94,7 +96,7 @@ proto.SetAdminFlagRequest.prototype.toObject = function(opt_includeInstance) {
 proto.SetAdminFlagRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     bizId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    userId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     adminFlag: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
@@ -137,7 +139,7 @@ proto.SetAdminFlagRequest.deserializeBinaryFromReader = function(msg, reader) {
       msg.setBizId(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserId(value);
       break;
     case 3:
@@ -181,8 +183,8 @@ proto.SetAdminFlagRequest.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getUserId();
-  if (f !== 0) {
-    writer.writeUint64(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -216,20 +218,20 @@ proto.SetAdminFlagRequest.prototype.setBizId = function(value) {
 
 
 /**
- * optional uint64 user_id = 2;
- * @return {number}
+ * optional string user_id = 2;
+ * @return {string}
  */
 proto.SetAdminFlagRequest.prototype.getUserId = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.SetAdminFlagRequest} returns this
  */
 proto.SetAdminFlagRequest.prototype.setUserId = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

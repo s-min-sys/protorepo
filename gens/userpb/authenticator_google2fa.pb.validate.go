@@ -57,7 +57,16 @@ func (m *GetSetupInfoRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := GetSetupInfoRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return GetSetupInfoRequestMultiError(errors)
@@ -296,9 +305,27 @@ func (m *DoSetupRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := DoSetupRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Code
+	if utf8.RuneCountInString(m.GetCode()) < 1 {
+		err := DoSetupRequestValidationError{
+			field:  "Code",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DoSetupRequestMultiError(errors)
@@ -529,9 +556,27 @@ func (m *VerifyRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := VerifyRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Code
+	if utf8.RuneCountInString(m.GetCode()) < 1 {
+		err := VerifyRequestValidationError{
+			field:  "Code",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return VerifyRequestMultiError(errors)

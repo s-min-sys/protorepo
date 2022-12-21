@@ -432,7 +432,16 @@ func (m *RegisterCheckRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := RegisterCheckRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return RegisterCheckRequestMultiError(errors)
@@ -701,7 +710,16 @@ func (m *RegisterEndRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := RegisterEndRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return RegisterEndRequestMultiError(errors)
@@ -1209,7 +1227,16 @@ func (m *LoginCheckRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := LoginCheckRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return LoginCheckRequestMultiError(errors)
@@ -1478,7 +1505,16 @@ func (m *LoginEndRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := LoginEndRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return LoginEndRequestMultiError(errors)
@@ -1982,7 +2018,16 @@ func (m *ChangeCheckRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := ChangeCheckRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return ChangeCheckRequestMultiError(errors)
@@ -2251,7 +2296,16 @@ func (m *ChangeEndRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := ChangeEndRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return ChangeEndRequestMultiError(errors)
@@ -2753,7 +2807,16 @@ func (m *DeleteCheckRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := DeleteCheckRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DeleteCheckRequestMultiError(errors)
@@ -3022,7 +3085,16 @@ func (m *DeleteEndRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := DeleteEndRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return DeleteEndRequestMultiError(errors)

@@ -3,13 +3,14 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_user_status_pb from "../../proto/user/status_pb";
+import * as validate_validate_pb from "../../validate/validate_pb";
 
 export class SetAdminFlagRequest extends jspb.Message {
   getBizId(): string;
   setBizId(value: string): void;
 
-  getUserId(): number;
-  setUserId(value: number): void;
+  getUserId(): string;
+  setUserId(value: string): void;
 
   getAdminFlag(): boolean;
   setAdminFlag(value: boolean): void;
@@ -27,7 +28,7 @@ export class SetAdminFlagRequest extends jspb.Message {
 export namespace SetAdminFlagRequest {
   export type AsObject = {
     bizId: string,
-    userId: number,
+    userId: string,
     adminFlag: boolean,
   }
 }

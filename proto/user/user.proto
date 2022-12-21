@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "proto/user/status.proto";
+import "validate/validate.proto";
 
 option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
 option java_multiple_files = true;
@@ -50,7 +51,7 @@ message RegisterBeginResponse {
 }
 
 message RegisterCheckRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message RegisterCheckResponse {
@@ -59,7 +60,7 @@ message RegisterCheckResponse {
 }
 
 message RegisterEndRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message RegisterEndResponse {
@@ -79,7 +80,7 @@ message LoginBeginResponse {
 }
 
 message LoginCheckRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message LoginCheckResponse {
@@ -88,7 +89,7 @@ message LoginCheckResponse {
 }
 
 message LoginEndRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message LoginEndResponse {
@@ -108,7 +109,7 @@ message ChangeBeginResponse {
 }
 
 message ChangeCheckRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message ChangeCheckResponse {
@@ -117,7 +118,7 @@ message ChangeCheckResponse {
 }
 
 message ChangeEndRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message ChangeEndResponse {
@@ -135,7 +136,7 @@ message DeleteBeginResponse {
 }
 
 message DeleteCheckRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message DeleteCheckResponse {
@@ -144,7 +145,7 @@ message DeleteCheckResponse {
 }
 
 message DeleteEndRequest {
-  string biz_id = 1;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
 }
 
 message DeleteEndResponse {

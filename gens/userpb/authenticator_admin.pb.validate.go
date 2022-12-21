@@ -57,9 +57,27 @@ func (m *SetAdminFlagRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := SetAdminFlagRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for UserId
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := SetAdminFlagRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	// no validation rules for AdminFlag
 

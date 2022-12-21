@@ -57,9 +57,27 @@ func (m *SetUserNameRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := SetUserNameRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for UserName
+	if utf8.RuneCountInString(m.GetUserName()) < 1 {
+		err := SetUserNameRequestValidationError{
+			field:  "UserName",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return SetUserNameRequestMultiError(errors)

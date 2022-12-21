@@ -57,11 +57,38 @@ func (m *RegisterRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := RegisterRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for UserName
+	if utf8.RuneCountInString(m.GetUserName()) < 1 {
+		err := RegisterRequestValidationError{
+			field:  "UserName",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if utf8.RuneCountInString(m.GetPassword()) < 1 {
+		err := RegisterRequestValidationError{
+			field:  "Password",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return RegisterRequestMultiError(errors)
@@ -292,11 +319,38 @@ func (m *LoginRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := LoginRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for UserName
+	if utf8.RuneCountInString(m.GetUserName()) < 1 {
+		err := LoginRequestValidationError{
+			field:  "UserName",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if utf8.RuneCountInString(m.GetPassword()) < 1 {
+		err := LoginRequestValidationError{
+			field:  "Password",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return LoginRequestMultiError(errors)
@@ -526,9 +580,27 @@ func (m *VerifyPasswordRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := VerifyPasswordRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if utf8.RuneCountInString(m.GetPassword()) < 1 {
+		err := VerifyPasswordRequestValidationError{
+			field:  "Password",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return VerifyPasswordRequestMultiError(errors)
@@ -763,9 +835,27 @@ func (m *ChangePasswordRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for BizId
+	if utf8.RuneCountInString(m.GetBizId()) < 1 {
+		err := ChangePasswordRequestValidationError{
+			field:  "BizId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
-	// no validation rules for Password
+	if utf8.RuneCountInString(m.GetPassword()) < 1 {
+		err := ChangePasswordRequestValidationError{
+			field:  "Password",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return ChangePasswordRequestMultiError(errors)

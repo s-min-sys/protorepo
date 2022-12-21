@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "proto/user/status.proto";
+import "validate/validate.proto";
 
 option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
 option java_multiple_files = true;
@@ -8,8 +9,8 @@ option java_package = "com.patdzb.user";
 option java_outer_classname = "UserProto";
 
 message SetAdminFlagRequest {
-  string biz_id = 1;
-  uint64 user_id = 2;
+  string biz_id = 1 [(validate.rules).string.min_len = 1];
+  string user_id = 2 [(validate.rules).string.min_len = 1];
   bool admin_flag = 3;
 }
 
