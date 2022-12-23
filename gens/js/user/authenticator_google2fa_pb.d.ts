@@ -3,7 +3,7 @@
 
 import * as jspb from "google-protobuf";
 import * as proto_user_status_pb from "../../proto/user/status_pb";
-import * as validate_validate_pb from "../../validate/validate_pb";
+import * as proto_validate_validate_pb from "../../proto/validate/validate_pb";
 
 export class GetSetupInfoRequest extends jspb.Message {
   getBizId(): string;

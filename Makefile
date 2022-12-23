@@ -36,5 +36,6 @@ clean_tmp:
 
 build_in_docker: clean_tmp compile_in_docker_4go compile_in_docker_4js
 	$(shell cp -r ${PATH}/gens/tmp/go/proto/user/* ${PATH}/gens/userpb/)
-	$(shell cp -r ${PATH}/gens/tmp/js/proto/user/* ${PATH}/gens/js/)
+	$(shell cp -r ${PATH}/gens/tmp/js/proto/user ${PATH}/gens/js/)
+	$(shell cp -r ${PATH}/gens/tmp/js/proto/validate ${PATH}/gens/js/)
 	$(shell rm -rf ${PATH}/gens/tmp)

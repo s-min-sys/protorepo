@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 import "proto/user/status.proto";
-import "validate/validate.proto";
+import "proto/validate/validate.proto";
 
 option go_package = "github.com/s-min-sys/protorepo/gens/userpb;userpb";
 option java_multiple_files = true;
