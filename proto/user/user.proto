@@ -41,7 +41,7 @@ message AuthenticatorEvent {
 //
 
 message RegisterBeginRequest {
-
+  bool sso = 1;
 }
 
 message RegisterBeginResponse {
@@ -67,10 +67,11 @@ message RegisterEndResponse {
   Status status = 1;
   string user_id = 2;
   string token = 3;
+  string sso_token = 4;
 }
 
 message LoginBeginRequest {
-
+  bool sso = 1;
 }
 
 message LoginBeginResponse {
@@ -93,6 +94,17 @@ message LoginEndRequest {
 }
 
 message LoginEndResponse {
+  Status status = 1;
+  string user_id = 2;
+  string token = 3;
+  string sso_token = 4;
+}
+
+message SSOLoginRequest {
+  string sso_token = 1;
+}
+
+message SSOLoginResponse {
   Status status = 1;
   string user_id = 2;
   string token = 3;
@@ -169,7 +181,7 @@ message ListUsersResponse {
 }
 
 message CheckTokenRequest {
-
+  bool sso = 1;
 }
 
 message UserTokenInfo {
@@ -182,6 +194,7 @@ message UserTokenInfo {
 message CheckTokenResponse {
   Status status = 1;
   UserTokenInfo token_info = 2;
+  string sso_token = 3;
 }
 
 message RenewTokenRequest {
@@ -210,6 +223,8 @@ service UserServicer {
   rpc LoginBegin(LoginBeginRequest) returns (LoginBeginResponse) {}
   rpc LoginCheck(LoginCheckRequest) returns (LoginCheckResponse) {}
   rpc LoginEnd(LoginEndRequest) returns (LoginEndResponse) {}
+
+  rpc SSOLogin(SSOLoginRequest) returns (SSOLoginResponse) {}
 
   rpc ChangeBegin(ChangeBeginRequest) returns (ChangeBeginResponse) {}
   rpc ChangeCheck(ChangeCheckRequest) returns (ChangeCheckResponse) {}

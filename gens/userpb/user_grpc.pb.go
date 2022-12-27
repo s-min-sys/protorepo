@@ -28,6 +28,7 @@ type UserServicerClient interface {
 	LoginBegin(ctx context.Context, in *LoginBeginRequest, opts ...grpc.CallOption) (*LoginBeginResponse, error)
 	LoginCheck(ctx context.Context, in *LoginCheckRequest, opts ...grpc.CallOption) (*LoginCheckResponse, error)
 	LoginEnd(ctx context.Context, in *LoginEndRequest, opts ...grpc.CallOption) (*LoginEndResponse, error)
+	SSOLogin(ctx context.Context, in *SSOLoginRequest, opts ...grpc.CallOption) (*SSOLoginResponse, error)
 	ChangeBegin(ctx context.Context, in *ChangeBeginRequest, opts ...grpc.CallOption) (*ChangeBeginResponse, error)
 	ChangeCheck(ctx context.Context, in *ChangeCheckRequest, opts ...grpc.CallOption) (*ChangeCheckResponse, error)
 	ChangeEnd(ctx context.Context, in *ChangeEndRequest, opts ...grpc.CallOption) (*ChangeEndResponse, error)
@@ -96,6 +97,15 @@ func (c *userServicerClient) LoginCheck(ctx context.Context, in *LoginCheckReque
 func (c *userServicerClient) LoginEnd(ctx context.Context, in *LoginEndRequest, opts ...grpc.CallOption) (*LoginEndResponse, error) {
 	out := new(LoginEndResponse)
 	err := c.cc.Invoke(ctx, "/UserServicer/LoginEnd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServicerClient) SSOLogin(ctx context.Context, in *SSOLoginRequest, opts ...grpc.CallOption) (*SSOLoginResponse, error) {
+	out := new(SSOLoginResponse)
+	err := c.cc.Invoke(ctx, "/UserServicer/SSOLogin", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -202,6 +212,7 @@ type UserServicerServer interface {
 	LoginBegin(context.Context, *LoginBeginRequest) (*LoginBeginResponse, error)
 	LoginCheck(context.Context, *LoginCheckRequest) (*LoginCheckResponse, error)
 	LoginEnd(context.Context, *LoginEndRequest) (*LoginEndResponse, error)
+	SSOLogin(context.Context, *SSOLoginRequest) (*SSOLoginResponse, error)
 	ChangeBegin(context.Context, *ChangeBeginRequest) (*ChangeBeginResponse, error)
 	ChangeCheck(context.Context, *ChangeCheckRequest) (*ChangeCheckResponse, error)
 	ChangeEnd(context.Context, *ChangeEndRequest) (*ChangeEndResponse, error)
@@ -236,6 +247,9 @@ func (UnimplementedUserServicerServer) LoginCheck(context.Context, *LoginCheckRe
 }
 func (UnimplementedUserServicerServer) LoginEnd(context.Context, *LoginEndRequest) (*LoginEndResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginEnd not implemented")
+}
+func (UnimplementedUserServicerServer) SSOLogin(context.Context, *SSOLoginRequest) (*SSOLoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SSOLogin not implemented")
 }
 func (UnimplementedUserServicerServer) ChangeBegin(context.Context, *ChangeBeginRequest) (*ChangeBeginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangeBegin not implemented")
@@ -384,6 +398,24 @@ func _UserServicer_LoginEnd_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServicerServer).LoginEnd(ctx, req.(*LoginEndRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserServicer_SSOLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SSOLoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServicerServer).SSOLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/UserServicer/SSOLogin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServicerServer).SSOLogin(ctx, req.(*SSOLoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -598,6 +630,10 @@ var UserServicer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoginEnd",
 			Handler:    _UserServicer_LoginEnd_Handler,
+		},
+		{
+			MethodName: "SSOLogin",
+			Handler:    _UserServicer_SSOLogin_Handler,
 		},
 		{
 			MethodName: "ChangeBegin",

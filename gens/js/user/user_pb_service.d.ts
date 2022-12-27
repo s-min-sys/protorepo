@@ -58,6 +58,15 @@ type UserServicerLoginEnd = {
   readonly responseType: typeof proto_user_user_pb.LoginEndResponse;
 };
 
+type UserServicerSSOLogin = {
+  readonly methodName: string;
+  readonly service: typeof UserServicer;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof proto_user_user_pb.SSOLoginRequest;
+  readonly responseType: typeof proto_user_user_pb.SSOLoginResponse;
+};
+
 type UserServicerChangeBegin = {
   readonly methodName: string;
   readonly service: typeof UserServicer;
@@ -156,6 +165,7 @@ export class UserServicer {
   static readonly LoginBegin: UserServicerLoginBegin;
   static readonly LoginCheck: UserServicerLoginCheck;
   static readonly LoginEnd: UserServicerLoginEnd;
+  static readonly SSOLogin: UserServicerSSOLogin;
   static readonly ChangeBegin: UserServicerChangeBegin;
   static readonly ChangeCheck: UserServicerChangeCheck;
   static readonly ChangeEnd: UserServicerChangeEnd;
@@ -253,6 +263,15 @@ export class UserServicerClient {
   loginEnd(
     requestMessage: proto_user_user_pb.LoginEndRequest,
     callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.LoginEndResponse|null) => void
+  ): UnaryResponse;
+  sSOLogin(
+    requestMessage: proto_user_user_pb.SSOLoginRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.SSOLoginResponse|null) => void
+  ): UnaryResponse;
+  sSOLogin(
+    requestMessage: proto_user_user_pb.SSOLoginRequest,
+    callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.SSOLoginResponse|null) => void
   ): UnaryResponse;
   changeBegin(
     requestMessage: proto_user_user_pb.ChangeBeginRequest,
