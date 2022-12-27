@@ -139,6 +139,15 @@ type UserServicerRenewToken = {
   readonly responseType: typeof proto_user_user_pb.RenewTokenResponse;
 };
 
+type UserServicerLogout = {
+  readonly methodName: string;
+  readonly service: typeof UserServicer;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof proto_user_user_pb.LogoutRequest;
+  readonly responseType: typeof proto_user_user_pb.LogoutResponse;
+};
+
 export class UserServicer {
   static readonly serviceName: string;
   static readonly RegisterBegin: UserServicerRegisterBegin;
@@ -156,6 +165,7 @@ export class UserServicer {
   static readonly ListUsers: UserServicerListUsers;
   static readonly CheckToken: UserServicerCheckToken;
   static readonly RenewToken: UserServicerRenewToken;
+  static readonly Logout: UserServicerLogout;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -324,6 +334,15 @@ export class UserServicerClient {
   renewToken(
     requestMessage: proto_user_user_pb.RenewTokenRequest,
     callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.RenewTokenResponse|null) => void
+  ): UnaryResponse;
+  logout(
+    requestMessage: proto_user_user_pb.LogoutRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.LogoutResponse|null) => void
+  ): UnaryResponse;
+  logout(
+    requestMessage: proto_user_user_pb.LogoutRequest,
+    callback: (error: ServiceError|null, responseMessage: proto_user_user_pb.LogoutResponse|null) => void
   ): UnaryResponse;
 }
 

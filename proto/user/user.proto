@@ -194,6 +194,14 @@ message RenewTokenResponse {
   UserTokenInfo token_info = 3;
 }
 
+message LogoutRequest {
+
+}
+
+message LogoutResponse {
+  Status status = 1;
+}
+
 service UserServicer {
   rpc RegisterBegin(RegisterBeginRequest) returns (RegisterBeginResponse) {}
   rpc RegisterCheck(RegisterCheckRequest) returns (RegisterCheckResponse) {}
@@ -214,4 +222,5 @@ service UserServicer {
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
   rpc CheckToken(CheckTokenRequest) returns (CheckTokenResponse) {}
   rpc RenewToken(RenewTokenRequest) returns (RenewTokenResponse) {}
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {}
 }

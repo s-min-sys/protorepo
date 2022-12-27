@@ -145,6 +145,15 @@ UserServicer.RenewToken = {
   responseType: proto_user_user_pb.RenewTokenResponse
 };
 
+UserServicer.Logout = {
+  methodName: "Logout",
+  service: UserServicer,
+  requestStream: false,
+  responseStream: false,
+  requestType: proto_user_user_pb.LogoutRequest,
+  responseType: proto_user_user_pb.LogoutResponse
+};
+
 exports.UserServicer = UserServicer;
 
 function UserServicerClient(serviceHost, options) {
@@ -591,6 +600,37 @@ UserServicerClient.prototype.renewToken = function renewToken(requestMessage, me
     callback = arguments[1];
   }
   var client = grpc.unary(UserServicer.RenewToken, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+UserServicerClient.prototype.logout = function logout(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(UserServicer.Logout, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

@@ -809,6 +809,44 @@ export namespace RenewTokenResponse {
   }
 }
 
+export class LogoutRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutRequest): LogoutRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LogoutRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutRequest;
+  static deserializeBinaryFromReader(message: LogoutRequest, reader: jspb.BinaryReader): LogoutRequest;
+}
+
+export namespace LogoutRequest {
+  export type AsObject = {
+  }
+}
+
+export class LogoutResponse extends jspb.Message {
+  hasStatus(): boolean;
+  clearStatus(): void;
+  getStatus(): proto_user_status_pb.Status | undefined;
+  setStatus(value?: proto_user_status_pb.Status): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutResponse): LogoutResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LogoutResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutResponse;
+  static deserializeBinaryFromReader(message: LogoutResponse, reader: jspb.BinaryReader): LogoutResponse;
+}
+
+export namespace LogoutResponse {
+  export type AsObject = {
+    status?: proto_user_status_pb.Status.AsObject,
+  }
+}
+
 export interface AuthenticatorIdentityMap {
   AUTHENTICATOR_IDENTITY_UNSPECIFIED: 0;
   AUTHENTICATOR_IDENTITY_USER: 1;
