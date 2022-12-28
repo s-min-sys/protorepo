@@ -158,9 +158,6 @@ export class RegisterEndResponse extends jspb.Message {
   getUserId(): string;
   setUserId(value: string): void;
 
-  getToken(): string;
-  setToken(value: string): void;
-
   getSsoToken(): string;
   setSsoToken(value: string): void;
 
@@ -178,7 +175,6 @@ export namespace RegisterEndResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
-    token: string,
     ssoToken: string,
   }
 }
@@ -312,9 +308,6 @@ export class LoginEndResponse extends jspb.Message {
   getUserId(): string;
   setUserId(value: string): void;
 
-  getToken(): string;
-  setToken(value: string): void;
-
   getSsoToken(): string;
   setSsoToken(value: string): void;
 
@@ -332,7 +325,6 @@ export namespace LoginEndResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
-    token: string,
     ssoToken: string,
   }
 }
@@ -366,9 +358,6 @@ export class SSOLoginResponse extends jspb.Message {
   getUserId(): string;
   setUserId(value: string): void;
 
-  getToken(): string;
-  setToken(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SSOLoginResponse.AsObject;
   static toObject(includeInstance: boolean, msg: SSOLoginResponse): SSOLoginResponse.AsObject;
@@ -383,7 +372,6 @@ export namespace SSOLoginResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
-    token: string,
   }
 }
 

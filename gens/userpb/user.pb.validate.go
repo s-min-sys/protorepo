@@ -856,8 +856,6 @@ func (m *RegisterEndResponse) validate(all bool) error {
 
 	// no validation rules for UserId
 
-	// no validation rules for Token
-
 	// no validation rules for SsoToken
 
 	if len(errors) > 0 {
@@ -1653,8 +1651,6 @@ func (m *LoginEndResponse) validate(all bool) error {
 
 	// no validation rules for UserId
 
-	// no validation rules for Token
-
 	// no validation rules for SsoToken
 
 	if len(errors) > 0 {
@@ -1889,8 +1885,6 @@ func (m *SSOLoginResponse) validate(all bool) error {
 	}
 
 	// no validation rules for UserId
-
-	// no validation rules for Token
 
 	if len(errors) > 0 {
 		return SSOLoginResponseMultiError(errors)

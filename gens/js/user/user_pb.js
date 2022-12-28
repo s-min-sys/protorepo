@@ -1871,8 +1871,7 @@ proto.RegisterEndResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: (f = msg.getStatus()) && proto_user_status_pb.Status.toObject(includeInstance, f),
     userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    token: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ssoToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+    ssoToken: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1920,10 +1919,6 @@ proto.RegisterEndResponse.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setToken(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
       msg.setSsoToken(value);
       break;
     default:
@@ -1970,17 +1965,10 @@ proto.RegisterEndResponse.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getToken();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getSsoToken();
   if (f.length > 0) {
     writer.writeString(
-      4,
+      3,
       f
     );
   }
@@ -2043,10 +2031,10 @@ proto.RegisterEndResponse.prototype.setUserId = function(value) {
 
 
 /**
- * optional string token = 3;
+ * optional string sso_token = 3;
  * @return {string}
  */
-proto.RegisterEndResponse.prototype.getToken = function() {
+proto.RegisterEndResponse.prototype.getSsoToken = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -2055,26 +2043,8 @@ proto.RegisterEndResponse.prototype.getToken = function() {
  * @param {string} value
  * @return {!proto.RegisterEndResponse} returns this
  */
-proto.RegisterEndResponse.prototype.setToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional string sso_token = 4;
- * @return {string}
- */
-proto.RegisterEndResponse.prototype.getSsoToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.RegisterEndResponse} returns this
- */
 proto.RegisterEndResponse.prototype.setSsoToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2954,8 +2924,7 @@ proto.LoginEndResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: (f = msg.getStatus()) && proto_user_status_pb.Status.toObject(includeInstance, f),
     userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    token: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    ssoToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+    ssoToken: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -3003,10 +2972,6 @@ proto.LoginEndResponse.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setToken(value);
-      break;
-    case 4:
-      var value = /** @type {string} */ (reader.readString());
       msg.setSsoToken(value);
       break;
     default:
@@ -3053,17 +3018,10 @@ proto.LoginEndResponse.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getToken();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
   f = message.getSsoToken();
   if (f.length > 0) {
     writer.writeString(
-      4,
+      3,
       f
     );
   }
@@ -3126,10 +3084,10 @@ proto.LoginEndResponse.prototype.setUserId = function(value) {
 
 
 /**
- * optional string token = 3;
+ * optional string sso_token = 3;
  * @return {string}
  */
-proto.LoginEndResponse.prototype.getToken = function() {
+proto.LoginEndResponse.prototype.getSsoToken = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -3138,26 +3096,8 @@ proto.LoginEndResponse.prototype.getToken = function() {
  * @param {string} value
  * @return {!proto.LoginEndResponse} returns this
  */
-proto.LoginEndResponse.prototype.setToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-/**
- * optional string sso_token = 4;
- * @return {string}
- */
-proto.LoginEndResponse.prototype.getSsoToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.LoginEndResponse} returns this
- */
 proto.LoginEndResponse.prototype.setSsoToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3324,8 +3264,7 @@ proto.SSOLoginResponse.prototype.toObject = function(opt_includeInstance) {
 proto.SSOLoginResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: (f = msg.getStatus()) && proto_user_status_pb.Status.toObject(includeInstance, f),
-    userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    token: jspb.Message.getFieldWithDefault(msg, 3, "")
+    userId: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -3371,10 +3310,6 @@ proto.SSOLoginResponse.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setUserId(value);
       break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setToken(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -3416,13 +3351,6 @@ proto.SSOLoginResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       2,
-      f
-    );
-  }
-  f = message.getToken();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
       f
     );
   }
@@ -3481,24 +3409,6 @@ proto.SSOLoginResponse.prototype.getUserId = function() {
  */
 proto.SSOLoginResponse.prototype.setUserId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional string token = 3;
- * @return {string}
- */
-proto.SSOLoginResponse.prototype.getToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.SSOLoginResponse} returns this
- */
-proto.SSOLoginResponse.prototype.setToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
