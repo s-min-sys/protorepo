@@ -1027,7 +1027,7 @@ proto.RegisterBeginRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.RegisterBeginRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sso: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+    ssoJumpUrl: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -1065,8 +1065,8 @@ proto.RegisterBeginRequest.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSso(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSsoJumpUrl(value);
       break;
     default:
       reader.skipField();
@@ -1097,9 +1097,9 @@ proto.RegisterBeginRequest.prototype.serializeBinary = function() {
  */
 proto.RegisterBeginRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSso();
-  if (f) {
-    writer.writeBool(
+  f = message.getSsoJumpUrl();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -1108,20 +1108,20 @@ proto.RegisterBeginRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional bool sso = 1;
- * @return {boolean}
+ * optional string sso_jump_url = 1;
+ * @return {string}
  */
-proto.RegisterBeginRequest.prototype.getSso = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+proto.RegisterBeginRequest.prototype.getSsoJumpUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {string} value
  * @return {!proto.RegisterBeginRequest} returns this
  */
-proto.RegisterBeginRequest.prototype.setSso = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
+proto.RegisterBeginRequest.prototype.setSsoJumpUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -2110,7 +2110,7 @@ proto.LoginBeginRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.LoginBeginRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sso: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+    ssoJumpUrl: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -2148,8 +2148,8 @@ proto.LoginBeginRequest.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSso(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSsoJumpUrl(value);
       break;
     default:
       reader.skipField();
@@ -2180,9 +2180,9 @@ proto.LoginBeginRequest.prototype.serializeBinary = function() {
  */
 proto.LoginBeginRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSso();
-  if (f) {
-    writer.writeBool(
+  f = message.getSsoJumpUrl();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -2191,20 +2191,20 @@ proto.LoginBeginRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional bool sso = 1;
- * @return {boolean}
+ * optional string sso_jump_url = 1;
+ * @return {string}
  */
-proto.LoginBeginRequest.prototype.getSso = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+proto.LoginBeginRequest.prototype.getSsoJumpUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {string} value
  * @return {!proto.LoginBeginRequest} returns this
  */
-proto.LoginBeginRequest.prototype.setSso = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
+proto.LoginBeginRequest.prototype.setSsoJumpUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -6108,7 +6108,7 @@ proto.CheckTokenRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.CheckTokenRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    sso: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+    ssoJumpUrl: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -6146,8 +6146,8 @@ proto.CheckTokenRequest.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setSso(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSsoJumpUrl(value);
       break;
     default:
       reader.skipField();
@@ -6178,9 +6178,9 @@ proto.CheckTokenRequest.prototype.serializeBinary = function() {
  */
 proto.CheckTokenRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getSso();
-  if (f) {
-    writer.writeBool(
+  f = message.getSsoJumpUrl();
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -6189,20 +6189,20 @@ proto.CheckTokenRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional bool sso = 1;
- * @return {boolean}
+ * optional string sso_jump_url = 1;
+ * @return {string}
  */
-proto.CheckTokenRequest.prototype.getSso = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+proto.CheckTokenRequest.prototype.getSsoJumpUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {string} value
  * @return {!proto.CheckTokenRequest} returns this
  */
-proto.CheckTokenRequest.prototype.setSso = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
+proto.CheckTokenRequest.prototype.setSsoJumpUrl = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

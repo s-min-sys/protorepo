@@ -163,7 +163,7 @@ func (m *RegisterBeginRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Sso
+	// no validation rules for SsoJumpUrl
 
 	if len(errors) > 0 {
 		return RegisterBeginRequestMultiError(errors)
@@ -962,7 +962,7 @@ func (m *LoginBeginRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Sso
+	// no validation rules for SsoJumpUrl
 
 	if len(errors) > 0 {
 		return LoginBeginRequestMultiError(errors)
@@ -3942,7 +3942,7 @@ func (m *CheckTokenRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Sso
+	// no validation rules for SsoJumpUrl
 
 	if len(errors) > 0 {
 		return CheckTokenRequestMultiError(errors)

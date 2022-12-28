@@ -41,7 +41,7 @@ message AuthenticatorEvent {
 //
 
 message RegisterBeginRequest {
-  bool sso = 1;
+  string sso_jump_url = 1;
 }
 
 message RegisterBeginResponse {
@@ -71,7 +71,7 @@ message RegisterEndResponse {
 }
 
 message LoginBeginRequest {
-  bool sso = 1;
+  string sso_jump_url = 1;
 }
 
 message LoginBeginResponse {
@@ -181,7 +181,7 @@ message ListUsersResponse {
 }
 
 message CheckTokenRequest {
-  bool sso = 1;
+  string sso_jump_url = 1;
 }
 
 message UserTokenInfo {

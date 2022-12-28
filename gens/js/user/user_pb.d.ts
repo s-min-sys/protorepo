@@ -30,8 +30,8 @@ export namespace AuthenticatorEvent {
 }
 
 export class RegisterBeginRequest extends jspb.Message {
-  getSso(): boolean;
-  setSso(value: boolean): void;
+  getSsoJumpUrl(): string;
+  setSsoJumpUrl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterBeginRequest.AsObject;
@@ -45,7 +45,7 @@ export class RegisterBeginRequest extends jspb.Message {
 
 export namespace RegisterBeginRequest {
   export type AsObject = {
-    sso: boolean,
+    ssoJumpUrl: string,
   }
 }
 
@@ -184,8 +184,8 @@ export namespace RegisterEndResponse {
 }
 
 export class LoginBeginRequest extends jspb.Message {
-  getSso(): boolean;
-  setSso(value: boolean): void;
+  getSsoJumpUrl(): string;
+  setSsoJumpUrl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginBeginRequest.AsObject;
@@ -199,7 +199,7 @@ export class LoginBeginRequest extends jspb.Message {
 
 export namespace LoginBeginRequest {
   export type AsObject = {
-    sso: boolean,
+    ssoJumpUrl: string,
   }
 }
 
@@ -752,8 +752,8 @@ export namespace ListUsersResponse {
 }
 
 export class CheckTokenRequest extends jspb.Message {
-  getSso(): boolean;
-  setSso(value: boolean): void;
+  getSsoJumpUrl(): string;
+  setSsoJumpUrl(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CheckTokenRequest.AsObject;
@@ -767,7 +767,7 @@ export class CheckTokenRequest extends jspb.Message {
 
 export namespace CheckTokenRequest {
   export type AsObject = {
-    sso: boolean,
+    ssoJumpUrl: string,
   }
 }
 
