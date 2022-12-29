@@ -1755,6 +1755,8 @@ func (m *SSOLoginRequest) validate(all bool) error {
 
 	// no validation rules for SsoToken
 
+	// no validation rules for SetCookieFlag
+
 	if len(errors) > 0 {
 		return SSOLoginRequestMultiError(errors)
 	}
@@ -1885,6 +1887,10 @@ func (m *SSOLoginResponse) validate(all bool) error {
 	}
 
 	// no validation rules for UserId
+
+	// no validation rules for Token
+
+	// no validation rules for TokenExpirationSeconds
 
 	if len(errors) > 0 {
 		return SSOLoginResponseMultiError(errors)

@@ -100,11 +100,14 @@ message LoginEndResponse {
 
 message SSOLoginRequest {
   string sso_token = 1;
+  bool set_cookie_flag = 2;
 }
 
 message SSOLoginResponse {
   Status status = 1;
   string user_id = 2;
+  string token = 3;
+  int32 token_expiration_seconds = 4; // 凭证过期事件，<=0 为不过期
 }
 
 message ChangeBeginRequest {

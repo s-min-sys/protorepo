@@ -333,6 +333,9 @@ export class SSOLoginRequest extends jspb.Message {
   getSsoToken(): string;
   setSsoToken(value: string): void;
 
+  getSetCookieFlag(): boolean;
+  setSetCookieFlag(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SSOLoginRequest.AsObject;
   static toObject(includeInstance: boolean, msg: SSOLoginRequest): SSOLoginRequest.AsObject;
@@ -346,6 +349,7 @@ export class SSOLoginRequest extends jspb.Message {
 export namespace SSOLoginRequest {
   export type AsObject = {
     ssoToken: string,
+    setCookieFlag: boolean,
   }
 }
 
@@ -357,6 +361,12 @@ export class SSOLoginResponse extends jspb.Message {
 
   getUserId(): string;
   setUserId(value: string): void;
+
+  getToken(): string;
+  setToken(value: string): void;
+
+  getTokenExpirationSeconds(): number;
+  setTokenExpirationSeconds(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SSOLoginResponse.AsObject;
@@ -372,6 +382,8 @@ export namespace SSOLoginResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
+    token: string,
+    tokenExpirationSeconds: number,
   }
 }
 

@@ -3133,7 +3133,8 @@ proto.SSOLoginRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.SSOLoginRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ssoToken: jspb.Message.getFieldWithDefault(msg, 1, "")
+    ssoToken: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    setCookieFlag: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -3174,6 +3175,10 @@ proto.SSOLoginRequest.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setSsoToken(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSetCookieFlag(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3210,6 +3215,13 @@ proto.SSOLoginRequest.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getSetCookieFlag();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -3228,6 +3240,24 @@ proto.SSOLoginRequest.prototype.getSsoToken = function() {
  */
 proto.SSOLoginRequest.prototype.setSsoToken = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional bool set_cookie_flag = 2;
+ * @return {boolean}
+ */
+proto.SSOLoginRequest.prototype.getSetCookieFlag = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.SSOLoginRequest} returns this
+ */
+proto.SSOLoginRequest.prototype.setSetCookieFlag = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
 };
 
 
@@ -3264,7 +3294,9 @@ proto.SSOLoginResponse.prototype.toObject = function(opt_includeInstance) {
 proto.SSOLoginResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: (f = msg.getStatus()) && proto_user_status_pb.Status.toObject(includeInstance, f),
-    userId: jspb.Message.getFieldWithDefault(msg, 2, "")
+    userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    token: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    tokenExpirationSeconds: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -3310,6 +3342,14 @@ proto.SSOLoginResponse.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setUserId(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToken(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTokenExpirationSeconds(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3351,6 +3391,20 @@ proto.SSOLoginResponse.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTokenExpirationSeconds();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
       f
     );
   }
@@ -3409,6 +3463,42 @@ proto.SSOLoginResponse.prototype.getUserId = function() {
  */
 proto.SSOLoginResponse.prototype.setUserId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string token = 3;
+ * @return {string}
+ */
+proto.SSOLoginResponse.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.SSOLoginResponse} returns this
+ */
+proto.SSOLoginResponse.prototype.setToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional int32 token_expiration_seconds = 4;
+ * @return {number}
+ */
+proto.SSOLoginResponse.prototype.getTokenExpirationSeconds = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.SSOLoginResponse} returns this
+ */
+proto.SSOLoginResponse.prototype.setTokenExpirationSeconds = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
