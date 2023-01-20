@@ -858,6 +858,8 @@ func (m *RegisterEndResponse) validate(all bool) error {
 
 	// no validation rules for SsoToken
 
+	// no validation rules for Origin
+
 	if len(errors) > 0 {
 		return RegisterEndResponseMultiError(errors)
 	}
@@ -1653,6 +1655,8 @@ func (m *LoginEndResponse) validate(all bool) error {
 
 	// no validation rules for SsoToken
 
+	// no validation rules for Origin
+
 	if len(errors) > 0 {
 		return LoginEndResponseMultiError(errors)
 	}
@@ -1891,6 +1895,8 @@ func (m *SSOLoginResponse) validate(all bool) error {
 	// no validation rules for Token
 
 	// no validation rules for TokenExpirationSeconds
+
+	// no validation rules for Origin
 
 	if len(errors) > 0 {
 		return SSOLoginResponseMultiError(errors)

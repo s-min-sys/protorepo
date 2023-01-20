@@ -67,6 +67,7 @@ message RegisterEndResponse {
   Status status = 1;
   string user_id = 2;
   string sso_token = 3;
+  string origin = 4;
 }
 
 message LoginBeginRequest {
@@ -96,6 +97,7 @@ message LoginEndResponse {
   Status status = 1;
   string user_id = 2;
   string sso_token = 3;
+  string origin = 4;
 }
 
 message SSOLoginRequest {
@@ -108,6 +110,7 @@ message SSOLoginResponse {
   string user_id = 2;
   string token = 3;
   int32 token_expiration_seconds = 4; // 凭证过期事件，<=0 为不过期
+  string origin = 5;
 }
 
 message ChangeBeginRequest {
