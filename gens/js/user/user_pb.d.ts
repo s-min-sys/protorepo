@@ -796,6 +796,9 @@ export class UserTokenInfo extends jspb.Message {
   getAge(): number;
   setAge(value: number): void;
 
+  getOrigin(): string;
+  setOrigin(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserTokenInfo.AsObject;
   static toObject(includeInstance: boolean, msg: UserTokenInfo): UserTokenInfo.AsObject;
@@ -812,6 +815,7 @@ export namespace UserTokenInfo {
     userName: string,
     startAt: number,
     age: number,
+    origin: string,
   }
 }
 

@@ -4060,6 +4060,8 @@ func (m *UserTokenInfo) validate(all bool) error {
 
 	// no validation rules for Age
 
+	// no validation rules for Origin
+
 	if len(errors) > 0 {
 		return UserTokenInfoMultiError(errors)
 	}

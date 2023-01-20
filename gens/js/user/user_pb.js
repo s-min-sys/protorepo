@@ -6331,7 +6331,8 @@ proto.UserTokenInfo.toObject = function(includeInstance, msg) {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
     userName: jspb.Message.getFieldWithDefault(msg, 2, ""),
     startAt: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    age: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    age: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    origin: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -6383,6 +6384,10 @@ proto.UserTokenInfo.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setAge(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrigin(value);
       break;
     default:
       reader.skipField();
@@ -6438,6 +6443,13 @@ proto.UserTokenInfo.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeInt64(
       4,
+      f
+    );
+  }
+  f = message.getOrigin();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -6513,6 +6525,24 @@ proto.UserTokenInfo.prototype.getAge = function() {
  */
 proto.UserTokenInfo.prototype.setAge = function(value) {
   return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional string origin = 5;
+ * @return {string}
+ */
+proto.UserTokenInfo.prototype.getOrigin = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.UserTokenInfo} returns this
+ */
+proto.UserTokenInfo.prototype.setOrigin = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 

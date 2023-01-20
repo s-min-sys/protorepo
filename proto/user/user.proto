@@ -192,6 +192,7 @@ message UserTokenInfo {
   string user_name = 2;
   int64 start_at = 3;
   int64 age = 4;
+  string origin = 5;
 }
 
 message CheckTokenResponse {
