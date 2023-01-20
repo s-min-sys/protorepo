@@ -716,6 +716,9 @@ export class UserInfo extends jspb.Message {
   getAdmin(): boolean;
   setAdmin(value: boolean): void;
 
+  getOrigin(): string;
+  setOrigin(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserInfo.AsObject;
   static toObject(includeInstance: boolean, msg: UserInfo): UserInfo.AsObject;
@@ -732,6 +735,7 @@ export namespace UserInfo {
     userName: string,
     hasGoogle2fa: boolean,
     admin: boolean,
+    origin: string,
   }
 }
 

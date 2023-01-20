@@ -176,6 +176,7 @@ message UserInfo {
   string user_name = 2;
   bool has_google_2fa = 3;
   bool admin = 4;
+  string origin = 5;
 }
 
 message ListUsersResponse {
