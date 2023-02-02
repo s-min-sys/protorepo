@@ -41,7 +41,7 @@ message AuthenticatorEvent {
 //
 
 message RegisterBeginRequest {
-  string sso_jump_url = 1;
+
 }
 
 message RegisterBeginResponse {
@@ -66,12 +66,9 @@ message RegisterEndRequest {
 message RegisterEndResponse {
   Status status = 1;
   string user_id = 2;
-  string sso_token = 3;
-  string origin = 4;
 }
 
 message LoginBeginRequest {
-  string sso_jump_url = 1;
 }
 
 message LoginBeginResponse {
@@ -96,21 +93,6 @@ message LoginEndRequest {
 message LoginEndResponse {
   Status status = 1;
   string user_id = 2;
-  string sso_token = 3;
-  string origin = 4;
-}
-
-message SSOLoginRequest {
-  string sso_token = 1;
-  bool set_cookie_flag = 2;
-}
-
-message SSOLoginResponse {
-  Status status = 1;
-  string user_id = 2;
-  string token = 3;
-  int32 token_expiration_seconds = 4; // 凭证过期事件，<=0 为不过期
-  string origin = 5;
 }
 
 message ChangeBeginRequest {
@@ -176,7 +158,6 @@ message UserInfo {
   string user_name = 2;
   bool has_google_2fa = 3;
   bool admin = 4;
-  string origin = 5;
 }
 
 message ListUsersResponse {
@@ -185,7 +166,7 @@ message ListUsersResponse {
 }
 
 message CheckTokenRequest {
-  string sso_jump_url = 1;
+
 }
 
 message UserTokenInfo {
@@ -193,13 +174,11 @@ message UserTokenInfo {
   string user_name = 2;
   int64 start_at = 3;
   int64 age = 4;
-  string origin = 5;
 }
 
 message CheckTokenResponse {
   Status status = 1;
   UserTokenInfo token_info = 2;
-  string sso_token = 3;
 }
 
 message RenewTokenRequest {
@@ -228,8 +207,6 @@ service UserServicer {
   rpc LoginBegin(LoginBeginRequest) returns (LoginBeginResponse) {}
   rpc LoginCheck(LoginCheckRequest) returns (LoginCheckResponse) {}
   rpc LoginEnd(LoginEndRequest) returns (LoginEndResponse) {}
-
-  rpc SSOLogin(SSOLoginRequest) returns (SSOLoginResponse) {}
 
   rpc ChangeBegin(ChangeBeginRequest) returns (ChangeBeginResponse) {}
   rpc ChangeCheck(ChangeCheckRequest) returns (ChangeCheckResponse) {}

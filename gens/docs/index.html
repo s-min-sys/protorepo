@@ -585,14 +585,6 @@
                 </li>
               
                 <li>
-                  <a href="#.SSOLoginRequest"><span class="badge">M</span>SSOLoginRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#.SSOLoginResponse"><span class="badge">M</span>SSOLoginResponse</a>
-                </li>
-              
-                <li>
                   <a href="#.UserInfo"><span class="badge">M</span>UserInfo</a>
                 </li>
               
@@ -4115,23 +4107,6 @@ validation fails if no fields in the oneof are set.</p></td>
         <p></p>
 
         
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>sso_jump_url</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
 
         
       
@@ -4155,13 +4130,6 @@ validation fails if no fields in the oneof are set.</p></td>
                 <tr>
                   <td>token_info</td>
                   <td><a href="#UserTokenInfo">UserTokenInfo</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>sso_token</td>
-                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -4434,23 +4402,6 @@ validation fails if no fields in the oneof are set.</p></td>
         <p></p>
 
         
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>sso_jump_url</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
 
         
       
@@ -4649,20 +4600,6 @@ validation fails if no fields in the oneof are set.</p></td>
                   <td><p> </p></td>
                 </tr>
               
-                <tr>
-                  <td>sso_token</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>origin</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
             </tbody>
           </table>
 
@@ -4705,23 +4642,6 @@ validation fails if no fields in the oneof are set.</p></td>
         <p></p>
 
         
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>sso_jump_url</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
 
         
       
@@ -4920,20 +4840,6 @@ validation fails if no fields in the oneof are set.</p></td>
                   <td><p> </p></td>
                 </tr>
               
-                <tr>
-                  <td>sso_token</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>origin</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
             </tbody>
           </table>
 
@@ -4986,89 +4892,6 @@ validation fails if no fields in the oneof are set.</p></td>
 
         
       
-        <h3 id=".SSOLoginRequest">SSOLoginRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>sso_token</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>set_cookie_flag</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".SSOLoginResponse">SSOLoginResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>status</td>
-                  <td><a href="#Status">Status</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>user_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>token</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>token_expiration_seconds</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p>凭证过期事件，&lt;=0 为不过期 </p></td>
-                </tr>
-              
-                <tr>
-                  <td>origin</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id=".UserInfo">UserInfo</h3>
         <p></p>
 
@@ -5103,13 +4926,6 @@ validation fails if no fields in the oneof are set.</p></td>
                 <tr>
                   <td>admin</td>
                   <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>origin</td>
-                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -5155,13 +4971,6 @@ validation fails if no fields in the oneof are set.</p></td>
                 <tr>
                   <td>age</td>
                   <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>origin</td>
-                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -5326,13 +5135,6 @@ validation fails if no fields in the oneof are set.</p></td>
                 <td>LoginEnd</td>
                 <td><a href="#LoginEndRequest">.LoginEndRequest</a></td>
                 <td><a href="#LoginEndResponse">.LoginEndResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>SSOLogin</td>
-                <td><a href="#SSOLoginRequest">.SSOLoginRequest</a></td>
-                <td><a href="#SSOLoginResponse">.SSOLoginResponse</a></td>
                 <td><p></p></td>
               </tr>
             

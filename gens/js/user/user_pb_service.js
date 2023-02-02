@@ -64,15 +64,6 @@ UserServicer.LoginEnd = {
   responseType: proto_user_user_pb.LoginEndResponse
 };
 
-UserServicer.SSOLogin = {
-  methodName: "SSOLogin",
-  service: UserServicer,
-  requestStream: false,
-  responseStream: false,
-  requestType: proto_user_user_pb.SSOLoginRequest,
-  responseType: proto_user_user_pb.SSOLoginResponse
-};
-
 UserServicer.ChangeBegin = {
   methodName: "ChangeBegin",
   service: UserServicer,
@@ -330,37 +321,6 @@ UserServicerClient.prototype.loginEnd = function loginEnd(requestMessage, metada
     callback = arguments[1];
   }
   var client = grpc.unary(UserServicer.LoginEnd, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-UserServicerClient.prototype.sSOLogin = function sSOLogin(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(UserServicer.SSOLogin, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

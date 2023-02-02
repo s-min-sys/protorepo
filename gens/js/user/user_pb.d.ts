@@ -30,9 +30,6 @@ export namespace AuthenticatorEvent {
 }
 
 export class RegisterBeginRequest extends jspb.Message {
-  getSsoJumpUrl(): string;
-  setSsoJumpUrl(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterBeginRequest.AsObject;
   static toObject(includeInstance: boolean, msg: RegisterBeginRequest): RegisterBeginRequest.AsObject;
@@ -45,7 +42,6 @@ export class RegisterBeginRequest extends jspb.Message {
 
 export namespace RegisterBeginRequest {
   export type AsObject = {
-    ssoJumpUrl: string,
   }
 }
 
@@ -158,12 +154,6 @@ export class RegisterEndResponse extends jspb.Message {
   getUserId(): string;
   setUserId(value: string): void;
 
-  getSsoToken(): string;
-  setSsoToken(value: string): void;
-
-  getOrigin(): string;
-  setOrigin(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegisterEndResponse.AsObject;
   static toObject(includeInstance: boolean, msg: RegisterEndResponse): RegisterEndResponse.AsObject;
@@ -178,15 +168,10 @@ export namespace RegisterEndResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
-    ssoToken: string,
-    origin: string,
   }
 }
 
 export class LoginBeginRequest extends jspb.Message {
-  getSsoJumpUrl(): string;
-  setSsoJumpUrl(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginBeginRequest.AsObject;
   static toObject(includeInstance: boolean, msg: LoginBeginRequest): LoginBeginRequest.AsObject;
@@ -199,7 +184,6 @@ export class LoginBeginRequest extends jspb.Message {
 
 export namespace LoginBeginRequest {
   export type AsObject = {
-    ssoJumpUrl: string,
   }
 }
 
@@ -312,12 +296,6 @@ export class LoginEndResponse extends jspb.Message {
   getUserId(): string;
   setUserId(value: string): void;
 
-  getSsoToken(): string;
-  setSsoToken(value: string): void;
-
-  getOrigin(): string;
-  setOrigin(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginEndResponse.AsObject;
   static toObject(includeInstance: boolean, msg: LoginEndResponse): LoginEndResponse.AsObject;
@@ -332,70 +310,6 @@ export namespace LoginEndResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     userId: string,
-    ssoToken: string,
-    origin: string,
-  }
-}
-
-export class SSOLoginRequest extends jspb.Message {
-  getSsoToken(): string;
-  setSsoToken(value: string): void;
-
-  getSetCookieFlag(): boolean;
-  setSetCookieFlag(value: boolean): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SSOLoginRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SSOLoginRequest): SSOLoginRequest.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: SSOLoginRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SSOLoginRequest;
-  static deserializeBinaryFromReader(message: SSOLoginRequest, reader: jspb.BinaryReader): SSOLoginRequest;
-}
-
-export namespace SSOLoginRequest {
-  export type AsObject = {
-    ssoToken: string,
-    setCookieFlag: boolean,
-  }
-}
-
-export class SSOLoginResponse extends jspb.Message {
-  hasStatus(): boolean;
-  clearStatus(): void;
-  getStatus(): proto_user_status_pb.Status | undefined;
-  setStatus(value?: proto_user_status_pb.Status): void;
-
-  getUserId(): string;
-  setUserId(value: string): void;
-
-  getToken(): string;
-  setToken(value: string): void;
-
-  getTokenExpirationSeconds(): number;
-  setTokenExpirationSeconds(value: number): void;
-
-  getOrigin(): string;
-  setOrigin(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SSOLoginResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SSOLoginResponse): SSOLoginResponse.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: SSOLoginResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SSOLoginResponse;
-  static deserializeBinaryFromReader(message: SSOLoginResponse, reader: jspb.BinaryReader): SSOLoginResponse;
-}
-
-export namespace SSOLoginResponse {
-  export type AsObject = {
-    status?: proto_user_status_pb.Status.AsObject,
-    userId: string,
-    token: string,
-    tokenExpirationSeconds: number,
-    origin: string,
   }
 }
 
@@ -716,9 +630,6 @@ export class UserInfo extends jspb.Message {
   getAdmin(): boolean;
   setAdmin(value: boolean): void;
 
-  getOrigin(): string;
-  setOrigin(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserInfo.AsObject;
   static toObject(includeInstance: boolean, msg: UserInfo): UserInfo.AsObject;
@@ -735,7 +646,6 @@ export namespace UserInfo {
     userName: string,
     hasGoogle2fa: boolean,
     admin: boolean,
-    origin: string,
   }
 }
 
@@ -768,9 +678,6 @@ export namespace ListUsersResponse {
 }
 
 export class CheckTokenRequest extends jspb.Message {
-  getSsoJumpUrl(): string;
-  setSsoJumpUrl(value: string): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CheckTokenRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CheckTokenRequest): CheckTokenRequest.AsObject;
@@ -783,7 +690,6 @@ export class CheckTokenRequest extends jspb.Message {
 
 export namespace CheckTokenRequest {
   export type AsObject = {
-    ssoJumpUrl: string,
   }
 }
 
@@ -799,9 +705,6 @@ export class UserTokenInfo extends jspb.Message {
 
   getAge(): number;
   setAge(value: number): void;
-
-  getOrigin(): string;
-  setOrigin(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserTokenInfo.AsObject;
@@ -819,7 +722,6 @@ export namespace UserTokenInfo {
     userName: string,
     startAt: number,
     age: number,
-    origin: string,
   }
 }
 
@@ -833,9 +735,6 @@ export class CheckTokenResponse extends jspb.Message {
   clearTokenInfo(): void;
   getTokenInfo(): UserTokenInfo | undefined;
   setTokenInfo(value?: UserTokenInfo): void;
-
-  getSsoToken(): string;
-  setSsoToken(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CheckTokenResponse.AsObject;
@@ -851,7 +750,6 @@ export namespace CheckTokenResponse {
   export type AsObject = {
     status?: proto_user_status_pb.Status.AsObject,
     tokenInfo?: UserTokenInfo.AsObject,
-    ssoToken: string,
   }
 }
 
